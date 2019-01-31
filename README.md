@@ -1,6 +1,6 @@
 # Gondul DHCP Event Collector
 
-dhcpd runs 'on commit' for every lease beeing handed out to clients  
+dhcpd runs 'on commit' for every lease being handed out to clients  
 this will push the lease info to the gondul api
 
 # Examples
