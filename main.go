@@ -43,8 +43,8 @@ var (
 	clientName  = flag.String("clientname", "", "Client Name")
 	leaseTime   = flag.Int("lease", 0, "Lease time")
 	circuitID   = flag.String("circuit", "", "Circuit ID from Option 82")
-	gondulURL   = flag.String("gondul", "gondul.tg.lol", "Gondul URL")
-	debugFlag   = flag.Bool("d", false, "Prints debug info")
+	gondulURL   = flag.String("gondul", "http://gondul.tg.lol/api/write/dhcp", "Gondul URL")
+	debugFlag   = flag.Bool("d", false, "Print debug info")
 	hostname, _ = os.Hostname()
 )
 
