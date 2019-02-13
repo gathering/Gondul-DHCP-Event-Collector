@@ -68,6 +68,7 @@ func main() {
 				ClientMac:  validateMac(*clientMac),
 				ClientName: *clientName,
 				LeaseTime:  *leaseTime,
+				CircuitID:  *circuitID,
 				Time:       time.Now(),
 			},
 		},
