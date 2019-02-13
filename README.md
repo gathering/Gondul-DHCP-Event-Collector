@@ -16,14 +16,32 @@ Below is a sample of the data generated that is sendt to the Gondul collector ap
 {
   "src": "dhcp",
   "metadata": {
-    "server": "dhcp.gathering.org"
+    "server": "dhcp.tg.lol"
   },
-  "data": {
-    "clientip": "2001:db8:db8:e11:0:0:0:1337",
-    "clientmac": "06:c1:a8:ab:e7:47",
-    "clientname": "WIN-589NNPG7EGD",
-    "time": "2019-02-13T22:08:34.781014993+01:00"
-  }
+  "data": [
+    {
+      "clientip": "127.27.36.162",
+      "clientmac": "0e:74:14:1f:ce:e2",
+      "clientname": "WIN-8KE6TTQA821",
+      "leasetime": 120,
+      "circuit": "ge-0/0/1.0:1011",
+      "time": "2019-02-13T22:21:27.195685448+01:00"
+    }
+  ]
+}
+{
+  "src": "dhcp",
+  "metadata": {
+    "server": "dhcp.tg.lol"
+  },
+  "data": [
+    {
+      "clientip": "2001:db8:db8:e11:0:0:0:1994",
+      "clientmac": "1a:61:8b:60:be:e6",
+      "clientname": "WIN-5BPB8IE9S48",
+      "time": "2019-02-13T22:21:27.521113806+01:00"
+    }
+  ]
 }
 ```
 
