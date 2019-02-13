@@ -24,7 +24,7 @@ Below is a sample of the data generated that is sendt to the Gondul collector ap
       "clientmac": "0e:74:14:1f:ce:e2",
       "clientname": "WIN-8KE6TTQA821",
       "leasetime": 120,
-      "circuit": "ge-0/0/1.0:1011",
+      "circuitid": "ge-0/0/1.0:1011",
       "time": "2019-02-13T22:21:27.195685448+01:00"
     }
   ]
