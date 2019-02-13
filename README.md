@@ -6,6 +6,8 @@ this will push the lease info to the gondul api
 # Examples
 See the [examples](examples) folder for the config needed to support this.
 
+# Installing
+Download latest release to /usr/local/sbin/
 
 # Known bugs
 Juniper has a bug in its dhcpv6 option 18, so we dont get circuit id for v6.  
