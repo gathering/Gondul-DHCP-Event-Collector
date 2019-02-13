@@ -1,7 +1,5 @@
 package main
 
-// env GOOS=linux GOARCH=amd64 go build
-
 import (
 	"bytes"
 	"encoding/json"
@@ -14,19 +12,19 @@ import (
 	"time"
 )
 
-// GondulData is
+// GondulData sendt to gondul api
 type GondulData struct {
-	Source string    `json:"src"`
-	Meta   MetaData  `json:"metadata"`
-	Lease  LeaseInfo `json:"data"`
+	Source string      `json:"src"`
+	Meta   MetaData    `json:"metadata"`
+	Lease  []LeaseInfo `json:"data"`
 }
 
-// MetaData contains some data :D
+// MetaData for gondul
 type MetaData struct {
 	Server string `json:"server"`
 }
 
-// LeaseInfo is the data sendt to Gondul
+// LeaseInfo contains dhcp data
 type LeaseInfo struct {
 	ClientIP   string    `json:"clientip"`
 	ClientMac  string    `json:"clientmac"`
@@ -43,7 +41,7 @@ var (
 	clientName  = flag.String("clientname", "", "Client Name")
 	leaseTime   = flag.Int("lease", 0, "Lease time")
 	circuitID   = flag.String("circuit", "", "Circuit ID from Option 82")
-	gondulURL   = flag.String("gondul", "http://gondul.tg.lol/api/write/dhcp", "Gondul URL")
+	gondulURL   = flag.String("gondul", "http://tech:rules@gondul.tg.lol/api/write/dhcp", "Gondul URL")
 	debugFlag   = flag.Bool("d", false, "Print debug info")
 	hostname, _ = os.Hostname()
 )
@@ -64,12 +62,14 @@ func main() {
 		Meta: MetaData{
 			Server: hostname,
 		},
-		Lease: LeaseInfo{
-			ClientIP:   *clientIP,
-			ClientMac:  validateMac(*clientMac),
-			ClientName: *clientName,
-			LeaseTime:  *leaseTime,
-			Time:       time.Now(),
+		Lease: []LeaseInfo{
+			LeaseInfo{
+				ClientIP:   *clientIP,
+				ClientMac:  validateMac(*clientMac),
+				ClientName: *clientName,
+				LeaseTime:  *leaseTime,
+				Time:       time.Now(),
+			},
 		},
 	}
 
@@ -125,10 +125,10 @@ func saveLog(d GondulData, endpoint string) {
 		"Host: %v API: %v IP: %v MAC: %v NAME: %v CIRCUIT: %v",
 		hostname,
 		endpoint,
-		d.Lease.ClientIP,
-		d.Lease.ClientMac,
-		d.Lease.ClientName,
-		d.Lease.CircuitID,
+		d.Lease[0].ClientIP,
+		d.Lease[0].ClientMac,
+		d.Lease[0].ClientName,
+		d.Lease[0].CircuitID,
 	)
 	f, err := os.OpenFile("/tmp/gondul-dhcp.log", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
 	if err != nil {
