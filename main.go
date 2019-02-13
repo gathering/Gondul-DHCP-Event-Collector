@@ -41,7 +41,7 @@ var (
 	clientName  = flag.String("clientname", "", "Client Name")
 	leaseTime   = flag.Int("lease", 0, "Lease time")
 	circuitID   = flag.String("circuit", "", "Circuit ID from Option 82")
-	gondulURL   = flag.String("gondul", "http://tech:rules@gondul.tg.lol/api/write/dhcp", "Gondul URL")
+	apiURL      = flag.String("api", "http://tech:rules@gondul.tg.lol/api/write/collector", "Gondul API URL")
 	debugFlag   = flag.Bool("d", false, "Print debug info")
 	hostname, _ = os.Hostname()
 )
@@ -74,10 +74,10 @@ func main() {
 	}
 
 	// Send data to Gondul
-	postData(d, *gondulURL)
+	postData(d, *apiURL)
 
 	// Save to logfile for local debug
-	saveLog(d, *gondulURL)
+	saveLog(d, *apiURL)
 
 	if *debugFlag == true {
 		debug(d)
@@ -104,7 +104,6 @@ func postData(data GondulData, endpoint string) {
 	if resp.StatusCode != 200 {
 		os.Exit(1)
 	}
-
 }
 
 // validateMac fixes a bug where dhcpd cuts leading 0's from the mac in each octet
