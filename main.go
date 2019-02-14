@@ -103,7 +103,7 @@ func postData(data GondulData, endpoint string) {
 		log.Fatal(err)
 	}
 	if resp.StatusCode != 200 {
-		os.Exit(1)
+		log.Fatal("API Status: ", resp.StatusCode)
 	}
 }
 
@@ -130,7 +130,7 @@ func saveLog(d GondulData, endpoint string) {
 		d.Lease[0].ClientName,
 		d.Lease[0].CircuitID,
 	)
-	f, err := os.OpenFile("/tmp/gondul-dhcp.log", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+	f, err := os.OpenFile("/var/log/gondul-dhcp-collector.log", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
 	if err != nil {
 		log.Fatal(err)
 	}
