@@ -57,3 +57,6 @@ inactive: dhcpv6-option18 {
 }
 ```
 
+## Dhcp Blocking
+When running this tool, it blocks the dhcp from giving out leases until the gondul request is done.  
+This was fixed by forking it out with a script. (kly should add the script here)
